@@ -3,10 +3,11 @@ import numpy as np
 
 from .components.reaction_wheel import ReactionWheel
 from ..utils.make_fields_classvariables import make_fields_classvariables
+from ..utils.quantities import Angle
 
 @dataclass
 class Satellite:
-    attitude: float
+    attitude: Angle
     angular_velocity: float
     rotational_inertia: float
     reaction_wheel: ReactionWheel
