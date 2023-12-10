@@ -4,4 +4,4 @@ import numpy as np
 @dataclass
 class ReactionWheel:
     angular_velocity: np.ndarray
-    rotational_inertia: float
+    moment_of_inertia: float

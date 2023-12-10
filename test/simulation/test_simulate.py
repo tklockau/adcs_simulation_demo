@@ -15,10 +15,10 @@ def test_simulate_attitude():
     satellite = Satellite(
         attitude=Angle(5),
         angular_velocity=AngularVelocity(0),
-        rotational_inertia=4,
+        moment_of_inertia=4,
         reaction_wheel=ReactionWheel(
             angular_velocity=AngularVelocity(0),
-            rotational_inertia=1
+            moment_of_inertia=1
         )
     )
 
@@ -29,7 +29,7 @@ def test_simulate_attitude():
     satellite_states = simulate(satellite, reaction_wheel_angular_velocity, time)
 
     calculated_attitudes = np.array(list(map(Satellite.attitude, satellite_states)))
-    ground_truth_angular_velocity = - (satellite.reaction_wheel.rotational_inertia / satellite.rotational_inertia) * reaction_wheel_angular_velocity
+    ground_truth_angular_velocity = - (satellite.reaction_wheel.moment_of_inertia / satellite.moment_of_inertia) * reaction_wheel_angular_velocity
     ground_truth = satellite.attitude + integrate(time, ground_truth_angular_velocity)
 
     assert np.nanmax(np.abs((ground_truth - calculated_attitudes) / np.max(ground_truth))) < 0.001
