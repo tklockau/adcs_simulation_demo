@@ -8,6 +8,7 @@ sys.path.insert(1, str(Path(__file__).parent.parent.parent))
 from simulation.simulate import simulate
 from simulation.satellite.satellite import Satellite
 from simulation.satellite.components.reaction_wheel import ReactionWheel
+from simulation.math.integrate import integrate
 
 def test_simulate_attitude():
     satellite = Satellite(
@@ -28,7 +29,7 @@ def test_simulate_attitude():
 
     calculated_attitudes = np.array(list(map(Satellite.attitude, satellite_states)))
     ground_truth_angular_velocity = - (satellite.reaction_wheel.rotational_inertia / satellite.rotational_inertia) * reaction_wheel_angular_velocity
-    ground_truth = satellite.attitude + np.cumsum(ground_truth_angular_velocity) * np.gradient(time)
+    ground_truth = satellite.attitude + integrate(time, ground_truth_angular_velocity)
 
     assert np.nanmax(np.abs((ground_truth - calculated_attitudes) / np.max(ground_truth))) < 0.001
 
