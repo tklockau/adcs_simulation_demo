@@ -3,7 +3,7 @@ import numpy as np
 
 from .components.reaction_wheel import ReactionWheel
 from ..utils.make_fields_classvariables import make_fields_classvariables
-from ..utils.quantities import Angle, AngularVelocity, MomentOfInertia
+from ..utils.quantities import Angle, AngularVelocity, MomentOfInertia, Time
 
 @dataclass
 class Satellite:
@@ -12,7 +12,7 @@ class Satellite:
     moment_of_inertia: MomentOfInertia
     reaction_wheel: ReactionWheel
 
-    def propagate(self, reaction_wheel_angular_velocity: AngularVelocity, time_difference) -> "Satellite":
+    def propagate(self, reaction_wheel_angular_velocity: AngularVelocity, time_difference: Time) -> "Satellite":
 
         new_angular_velocity = - (self.reaction_wheel.moment_of_inertia / self.moment_of_inertia) * reaction_wheel_angular_velocity
         new_attitude = self.attitude + new_angular_velocity * time_difference
