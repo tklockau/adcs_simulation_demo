@@ -13,3 +13,6 @@ class Angle(float):
 
 class AngularVelocity(float):
     """Angular velocity in rad/s. Inherits from float."""
+
+class MomentOfInertia(float):
+    """Moment of inertia in kg * m ** 2"""

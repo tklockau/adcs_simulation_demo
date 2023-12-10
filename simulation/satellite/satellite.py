@@ -3,13 +3,13 @@ import numpy as np
 
 from .components.reaction_wheel import ReactionWheel
 from ..utils.make_fields_classvariables import make_fields_classvariables
-from ..utils.quantities import Angle, AngularVelocity
+from ..utils.quantities import Angle, AngularVelocity, MomentOfInertia
 
 @dataclass
 class Satellite:
     attitude: Angle
     angular_velocity: AngularVelocity
-    moment_of_inertia: float
+    moment_of_inertia: MomentOfInertia
     reaction_wheel: ReactionWheel
 
     def propagate(self, reaction_wheel_angular_velocity: AngularVelocity, time_difference) -> "Satellite":
