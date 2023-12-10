@@ -9,14 +9,15 @@ from simulation.simulate import simulate
 from simulation.satellite.satellite import Satellite
 from simulation.satellite.components.reaction_wheel import ReactionWheel
 from simulation.math.integrate import integrate
+from simulation.utils.quantities import Angle, AngularVelocity
 
 def test_simulate_attitude():
     satellite = Satellite(
-        attitude=5,
-        angular_velocity=0,
+        attitude=Angle(5),
+        angular_velocity=AngularVelocity(0),
         rotational_inertia=4,
         reaction_wheel=ReactionWheel(
-            angular_velocity=0,
+            angular_velocity=AngularVelocity(0),
             rotational_inertia=1
         )
     )
