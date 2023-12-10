@@ -8,8 +8,8 @@ sys.path.insert(1, str(Path(__file__).parent.parent.parent))
 from simulation.simulate import simulate
 from simulation.satellite.satellite import Satellite
 from simulation.satellite.components.reaction_wheel import ReactionWheel
-from simulation.math.integrate import integrate
 from simulation.utils.quantities import Angle, AngularVelocity, MomentOfInertia, Vector, Time
+from simulation.utils.math import integrate
 
 def test_simulate_attitude():
     satellite = Satellite(
