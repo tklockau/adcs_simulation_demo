@@ -9,7 +9,7 @@ from simulation.simulate import simulate
 from simulation.satellite.satellite import Satellite
 from simulation.satellite.components.reaction_wheel import ReactionWheel
 from simulation.math.integrate import integrate
-from simulation.utils.quantities import Angle, AngularVelocity, MomentOfInertia
+from simulation.utils.quantities import Angle, AngularVelocity, MomentOfInertia, Vector, Time
 
 def test_simulate_attitude():
     satellite = Satellite(
@@ -22,7 +22,7 @@ def test_simulate_attitude():
         )
     )
 
-    time = np.linspace(0, 60, 100_000)
+    time = Vector[Time].from_range(0, 60)
 
     reaction_wheel_angular_velocity = -1/120 * time ** 2 + 0
 

@@ -2,10 +2,18 @@
 The classes in this module do not have any function reason to be used, but should be used as type 
 hints and initiators to signify what exactly a variable means.
 """
+import typing as t
 import numpy as np
 
 class Vector(np.ndarray):
-    pass
+
+    @classmethod
+    def __getitem__(cls, type: t.Type):
+        return cls
+    
+    @classmethod
+    def from_range(cls, start: float, stop: float, num: int=100_000) -> "Vector":
+        return np.linspace(start, stop, num)
 
 class Angle(float):
     """An angle in radiants. Inherits from float."""
