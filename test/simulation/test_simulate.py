@@ -9,7 +9,7 @@ from simulation.simulate import simulate
 from simulation.satellite.satellite import Satellite
 from simulation.satellite.components.reaction_wheel import ReactionWheel
 from simulation.utils.quantities import Angle, AngularVelocity, MomentOfInertia, Vector, Time
-from simulation.utils.math import integrate
+from simulation.utils.math import integrate, compare_with_tolerance
 
 def test_simulate_attitude():
     satellite = Satellite(
@@ -32,7 +32,7 @@ def test_simulate_attitude():
     ground_truth_angular_velocity = - (satellite.reaction_wheel.moment_of_inertia / satellite.moment_of_inertia) * reaction_wheel_angular_velocity
     ground_truth = satellite.attitude + integrate(time, ground_truth_angular_velocity)
 
-    assert np.nanmax(np.abs((ground_truth - calculated_attitudes) / np.max(ground_truth))) < 0.001
+    assert compare_with_tolerance(ground_truth, calculated_attitudes, 0.001)
 
 if __name__ == "__main__":
     os.system("clear")
