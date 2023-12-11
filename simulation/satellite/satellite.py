@@ -8,11 +8,30 @@ from ..utils.quantities import AngularVelocity, Time
 
 @dataclass
 class Satellite:
+    """
+    Object representing all important attributes of our satellite. Can store any configuration 
+    needed to model it (like MOVE-II, MOVE-III).
+    """
+
     state: SatelliteState
+    """
+    Storage of satellite attributes, that change over time (like attitude).
+    """
+
     properties: SatelliteProperties
+    """
+    Storage of permanent satellite attributes (like mass or moment of inertia).
+    """
+
     reaction_wheel: ReactionWheel
+    """
+    One examplary active component of the satellite used to control attitude.
+    """
 
     def propagate(self, reaction_wheel_angular_velocity: AngularVelocity, time_delta: Time) -> "Satellite":
+        """
+        Advance the satellite state by a given time delta and return the result.
+        """
 
         reaction_wheel = ReactionWheel(
             reaction_wheel_angular_velocity, 

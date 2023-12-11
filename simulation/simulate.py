@@ -7,6 +7,10 @@ def simulate(
     reaction_wheel_angular_velocity,
     time,
 ) -> np.ndarray:
+    """
+    Simulate a satellites rotation based the reaction wheel velocity.
+    """
+
     satellite_states = [satellite]
 
     for i, dt in enumerate(np.gradient(time)[1:]):

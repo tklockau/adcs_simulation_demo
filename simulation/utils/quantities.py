@@ -8,12 +8,25 @@ import numpy as np
 class Vector(np.ndarray):
 
     @classmethod
-    def __getitem__(cls, type: t.Type):
+    def __getitem__(cls, *args, **kwargs):
         return cls
     
     @classmethod
-    def from_range(cls, start: float, stop: float, num: int=100_000) -> "Vector":
-        return np.linspace(start, stop, num)
+    def linear(cls, start: float, stop: float, resolution: int=100_000) -> "Vector":
+        """
+        Create a linear vector of floating point numbers between a given start and stop with a 
+        resolution.
+
+        Parameters
+        ----------
+        start : float
+            start value of the vector
+        stop : float
+            end value of the vector (inclusive)
+        resolution : int, optional
+            number of vector elements (default is 100 000)
+        """
+        return np.linspace(start, stop, resolution)
 
 class Angle(float):
     """An angle in radiants. Inherits from float."""

@@ -26,9 +26,9 @@ def test_simulate_attitude():
         )
     )
 
-    time = Vector[Time].from_range(0, 60)
+    time = Vector[Time].linear(0, 60)
 
-    reaction_wheel_angular_velocity = -1/120 * time ** 2 + 0
+    reaction_wheel_angular_velocity = -1/120 * (time ** 2)
 
     satellite_states = simulate(satellite, reaction_wheel_angular_velocity, time)
 
@@ -40,4 +40,4 @@ def test_simulate_attitude():
 
 if __name__ == "__main__":
     os.system("clear")
-    pytest.main([__file__, "--disable-pytest-warnings", "--cache-clear"])
+    pytest.main([__file__, "--disable-pytest-warnings", "--cache-clear", "-v"])
