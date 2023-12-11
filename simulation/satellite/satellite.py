@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 import numpy as np
 
-from .state import State
+from .satellite_state import SatelliteState
 from .components.reaction_wheel import ReactionWheel
 from ..utils.make_fields_classvariables import make_fields_classvariables
-from ..utils.quantities import Angle, AngularVelocity, MomentOfInertia, Time
+from ..utils.quantities import AngularVelocity, MomentOfInertia, Time
 
 @dataclass
 class Satellite:
-    state: State
+    state: SatelliteState
     moment_of_inertia: MomentOfInertia
     reaction_wheel: ReactionWheel
 
@@ -18,7 +18,7 @@ class Satellite:
         new_attitude = self.state.attitude + new_angular_velocity * time_difference
 
         return Satellite(
-            state=State(
+            state=SatelliteState(
                 attitude=new_attitude,
                 angular_velocity=new_angular_velocity
             ),
