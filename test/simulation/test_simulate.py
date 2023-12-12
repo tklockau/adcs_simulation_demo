@@ -2,14 +2,10 @@ import pytest
 import os
 import sys
 from pathlib import Path
-import numpy as np
 
 sys.path.insert(1, str(Path(__file__).parent.parent.parent))
 from simulation.simulate import simulate
-from simulation.satellite.satellite import Satellite
-from simulation.satellite.satellite_state import SatelliteState
-from simulation.satellite.satellite_properties import SatelliteProperties
-from simulation.satellite.components.reaction_wheel import ReactionWheel
+from simulation.satellite.satellite import Satellite, SatelliteProperties, SatelliteState, ReactionWheel
 from simulation.utils.quantities import Angle, AngularVelocity, MomentOfInertia, Vector, Time
 from simulation.utils.math import integrate, compare_with_tolerance, extract_values
 
