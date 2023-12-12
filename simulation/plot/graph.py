@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from ..utils.quantities import Vector
+from ..utils.math import extract_values
 from ..satellite.satellite import Satellite
 
 @dataclass
@@ -16,7 +17,7 @@ class Graph:
     def from_satellites(cls, label: str, satellites: Vector[Satellite], plot_method) -> "Graph":
         return Graph(
             label,
-            np.array(list(map(plot_method, satellites)))
+            extract_values(satellites, plot_method)
         )
 
     def __post_init__(self):
