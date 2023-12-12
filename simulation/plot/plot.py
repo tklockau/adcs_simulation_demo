@@ -4,6 +4,8 @@ from matplotlib.figure import Figure
 
 from .graph import Graph
 
+plt.style.use('dark_background')
+
 def plot(x_values, graphs: Graph or list[Graph], x_label: str="", y_label: str="", title: str=""):
     
     figure, plot = _plot_graphs(x_values, _make_graphs_list(graphs))
@@ -35,7 +37,6 @@ def _set_up_text(plot: Axes, x_label: str, y_label: str, title: str):
     return plot
 
 def _set_plot_style(figure: Figure, plot: Axes) -> tuple[Figure, Axes]:
-    plt.style.use('dark_background')
     background_color = "#1d1e1e"
 
     plot.set_facecolor(background_color)
