@@ -27,12 +27,12 @@ def test_simulate_attitude():
     )
 
     time = Vector[Time].linear(0, 60)
-
     reaction_wheel_angular_velocity = -1/120 * (time ** 2)
 
     satellite_states = simulate(satellite, reaction_wheel_angular_velocity, time)
 
     calculated_attitudes = extract_values(satellite_states, SatelliteState.attitude)
+
     ground_truth_angular_velocity = - (satellite.reaction_wheel.moment_of_inertia / satellite.properties.moment_of_inertia) * reaction_wheel_angular_velocity
     ground_truth = satellite.state.attitude + integrate(time, ground_truth_angular_velocity)
 
