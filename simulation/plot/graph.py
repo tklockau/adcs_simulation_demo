@@ -10,7 +10,7 @@ class Graph:
     y_values: Vector
 
     _instance_counter = 0
-    _COLOR_PALETTE = ("blue", "green", "red")
+    _COLOR_PALETTE = ("lightskyblue", "mediumspringgreen", "salmon")
 
     @classmethod
     def from_satellites(cls, label: str, satellites: Vector[Satellite], plot_method) -> "Graph":

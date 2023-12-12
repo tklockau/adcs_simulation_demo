@@ -11,7 +11,7 @@ from simulation.satellite.satellite_state import SatelliteState
 from simulation.satellite.satellite_properties import SatelliteProperties
 from simulation.satellite.components.reaction_wheel import ReactionWheel
 from simulation.utils.quantities import Angle, AngularVelocity, MomentOfInertia, Vector, Time
-from simulation.utils.math import integrate, compare_with_tolerance
+from simulation.utils.math import integrate, compare_with_tolerance, extract_values
 
 def test_simulate_attitude():
     satellite = Satellite(
@@ -32,7 +32,7 @@ def test_simulate_attitude():
 
     satellite_states = simulate(satellite, reaction_wheel_angular_velocity, time)
 
-    calculated_attitudes = np.array(list(map(SatelliteState.attitude, satellite_states)))
+    calculated_attitudes = extract_values(satellite_states, SatelliteState.attitude)
     ground_truth_angular_velocity = - (satellite.reaction_wheel.moment_of_inertia / satellite.properties.moment_of_inertia) * reaction_wheel_angular_velocity
     ground_truth = satellite.state.attitude + integrate(time, ground_truth_angular_velocity)
 

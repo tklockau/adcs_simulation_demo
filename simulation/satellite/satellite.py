@@ -49,4 +49,18 @@ class Satellite:
         )
 
 make_fields_classvariables(Satellite)
+
+move_2b = Satellite(
+    state=SatelliteState(
+        attitude=0,
+        angular_velocity=0
+    ),
+    properties=SatelliteProperties(
+        moment_of_inertia=4
+    ),
+    reaction_wheel=ReactionWheel(
+        moment_of_inertia=1,
+        angular_velocity=0
+    )
+)
     
