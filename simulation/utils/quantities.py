@@ -27,6 +27,12 @@ class Vector(np.ndarray):
             number of vector elements (default is 100 000)
         """
         return np.linspace(start, stop, resolution)
+    
+    def zeros(cls, number_of_elements: int) -> "Vector":
+        """
+        Create a vector with only zeros.
+        """
+        return np.zeros(number_of_elements)
 
 class Angle(float):
     """An angle in radiants. Inherits from float."""

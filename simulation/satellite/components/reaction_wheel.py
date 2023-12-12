@@ -23,4 +23,4 @@ class ReactionWheel:
     See https://en.wikipedia.org/wiki/Moment_of_inertia.
     """
 
-make_fields_classvariables(ReactionWheel)
+make_fields_classvariables(ReactionWheel, ".reaction_wheel")
