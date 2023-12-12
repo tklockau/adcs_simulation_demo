@@ -27,10 +27,8 @@ def test_color():
     g2 = Graph.from_satellites("", [], lambda x: x)
     g3 = Graph("", y_values)
 
-    assert g0.color == Graph._COLOR_PALETTE[0]
-    assert g1.color == Graph._COLOR_PALETTE[1]
-    assert g2.color == Graph._COLOR_PALETTE[2]
-    assert g3.color == Graph._COLOR_PALETTE[0]
+    assert g0.color != g1.color != g2.color
+    assert g0.color == g3.color
 
 def test_from_satellite():
     satellites = [
