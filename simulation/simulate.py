@@ -1,11 +1,12 @@
 import numpy as np
 
 from .satellite.satellite import Satellite
+from .utils.quantities import AngularVelocity, Time, Vector
 
 def simulate(
     satellite: Satellite, 
-    reaction_wheel_angular_velocity,
-    time,
+    reaction_wheel_angular_velocity: Vector[AngularVelocity],
+    time: Vector[Time],
 ) -> np.ndarray:
     """
     Simulate a satellites rotation based the reaction wheel velocity.
